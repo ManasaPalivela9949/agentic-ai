@@ -1,8 +1,8 @@
 def init_memory(goal: str) -> dict:
-    memory = {
+    print("[MEMORY] Initializing memory")
+
+    return {
         "goal": goal,
         "steps": [],
         "completed": False
     }
-    print("[MEMORY] Initialized:", memory)
-    return memory
