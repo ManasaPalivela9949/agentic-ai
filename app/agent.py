@@ -10,7 +10,7 @@ def run_agent(goal: str):
     print("[AGENT] Goal:", goal)
 
     while True:
-        print("\n[AGENT] Loop iteration started")
+        print("\n[AGENT] Loop iteration")
         step = decide_next_step(memory)
         print("[AGENT] Control decided:", step)
 
