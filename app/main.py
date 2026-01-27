@@ -1,5 +1,5 @@
 from app.agent import run_agent
 
 if __name__ == "__main__":
-    goal = "Explain inflation in very simple terms"
+    goal = "What is different between AI and Python"
     run_agent(goal)
