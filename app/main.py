@@ -3,7 +3,7 @@ from app.planner_agent import planner_step
 from app.executor_agent import executor_step
 
 if __name__ == "__main__":
-    goal = "Explain the Aurangabad college notice in simple words"
+    goal = "what is difference between AI and Python ?"
 
     memory = init_memory(goal)
 
