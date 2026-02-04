@@ -1,28 +1,27 @@
 from app.control import decide_next_step
+from app.memory import init_memory
 from app.llm import call_llm
-from app.memory import load_memory, save_memory
+from app.tools import observe_output
 from app.retriever import retrieve_context
 
-
 def run_agent(goal: str):
-    memory = load_memory(goal)
+    memory = init_memory(goal)
 
     print("\n[AGENT] Starting agent")
     print("[AGENT] Goal:", goal)
 
     while True:
         step = decide_next_step(memory)
-        print("[AGENT] Control decided:", step)
 
         if step == "call_llm":
-            context = retrieve_context(goal)
-            response = call_llm(goal, context)
-            memory["steps"].append(response)
+            context = retrieve_context()
+            answer = call_llm(goal, context)
+            memory["steps"].append(answer)
+            print("\n[AGENT] FINAL ANSWER:\n", answer)
 
-            print("\n[AGENT] FINAL ANSWER:")
-            print(response)
+        elif step == "observe":
+            observe_output(memory["steps"][-1], memory)
 
         elif step == "stop":
-            save_memory(memory)
-            print("[AGENT] Agent stopped cleanly")
+            print("\n[AGENT] Agent stopped cleanly")
             break

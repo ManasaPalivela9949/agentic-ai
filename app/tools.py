@@ -1,4 +1,6 @@
-def market_explainer_tool(text: str) -> str:
-    print("\n[TOOL] MARKET EXPLANATION:")
+def observe_output(text: str, memory: dict):
+    print("\n[OBSERVE] Reviewing output:")
     print(text)
-    return "EXPLANATION_PRINTED"
+
+    # 🔑 CRITICAL: update memory after observation
+    memory["steps"].append("observed")
